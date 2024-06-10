@@ -1,0 +1,103 @@
+{
+  "version": 8,
+  "name": "style_rothenburger_assignement3",
+  "metadata": {"maputnik:renderer": "mlgljs"},
+  "zoom": 8,
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key={key}"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "filter": ["all"],
+      "paint": {"background-color": "rgba(255, 255, 255, 1)"}
+    },
+    {
+      "id": "Parks",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "park",
+      "paint": {
+        "fill-opacity": {"stops": [[6, 0.3], [10, 0.6]]},
+        "fill-color": "rgba(16, 55, 23, 1)"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "paint": {"fill-color": "rgba(144, 182, 255, 1)"}
+    },
+    {
+      "id": "cities",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "paint": {"fill-color": "rgba(0, 0, 0, 0.54)"}
+    },
+    {
+      "id": "Streets",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["==", "class", "motorway"]]
+    },
+    {
+      "id": "name_transportation",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation_name",
+      "layout": {
+        "text-font": ["Open Sans Regular"],
+        "visibility": "visible",
+        "text-field": "{class}",
+        "text-size": {"stops": [[1, 10], [10, 12]]}
+      }
+    },
+    {
+      "id": "pointofinterests",
+      "type": "circle",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": "rgba(255, 0, 0, 1)",
+        "circle-radius": 15,
+        "circle-pitch-alignment": "map",
+        "circle-translate-anchor": "map",
+        "circle-pitch-scale": "map"
+      }
+    },
+    {
+      "id": "name_water",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "layout": {"text-font": ["Open Sans Regular"], "text-field": "{class}"}
+    },
+    {
+      "id": "border_countries",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "filter": ["all", [">", "admin_level", 3]],
+      "paint": {"line-color": "rgba(255, 0, 0, 1)"}
+    },
+    {
+      "id": "waterway_river",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "filter": ["all", ["==", "class", "river"]],
+      "paint": {"line-color": "rgba(192, 0, 255, 1)"}
+    }
+  ],
+  "id": "7zgtw97"
+}
